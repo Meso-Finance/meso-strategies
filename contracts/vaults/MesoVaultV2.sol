@@ -109,6 +109,7 @@ contract MesoVaultV2 is ERC20, Ownable, ReentrancyGuard {
 
         uint256 _after = balance();
         _amount = _after.sub(_pool); // Additional check for deflationary tokens
+        _amount = _amount.sub(depositFee);
         earn(_amount);
 
         _amount = balance().sub(_pool);
