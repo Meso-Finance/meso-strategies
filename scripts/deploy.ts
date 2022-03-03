@@ -1,18 +1,48 @@
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// When running the script with `npx hardhat run <script>` you'll find the Hardhat
-// Runtime Environment's members available in the global scope.
 import { ethers } from "hardhat";
+import { config } from "./config";
+// import { config } from "./config";
+import { ConfigItem } from "./types";
 
-async function main() {
+export const deployStrat = async (config: ConfigItem) => {
+  try {
+    const { stratContractName, input, output, pid } = config;
+    const stratContract = await ethers.getContractFactory(stratContractName);
+    const strat = await stratContract.deploy(input, output, pid);
+    await strat.deployed();
+    return strat.address;
+  } catch (e) {
+    console.error(e);
+  }
+};
 
-  const StratContract = await 
+export const deployVault = async (config: ConfigItem, strategy: string) => {
+  try {
+    const { vaultContractName, vaultName, vaultSymbol } = config;
+    const vaultContract = await ethers.getContractFactory(vaultContractName);
+    const vault = await vaultContract.deploy(strategy, vaultName, vaultSymbol);
+    await vault.deployed();
+    return vault.address;
+  } catch (e) {
+    console.error(e);
+  }
+};
 
-}
+const main = async () => {
+  const id = process.env.CONFIG_ID;
+  if (!id) {
+    throw new Error("No config id supplied");
+  }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
+  const configItem = config[id];
+  const stratAddr = await deployStrat(configItem);
+  console.log(`Strat Deployed at ${stratAddr}`);
+  let vaultAddr;
+  if (stratAddr) {
+    vaultAddr = await deployVault(configItem, stratAddr);
+  }
+  console.log(`Vault Deployed at ${vaultAddr}`);
+};
+
 main().catch((error) => {
   console.error(error);
   process.exitCode = 1;

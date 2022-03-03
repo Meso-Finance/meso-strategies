@@ -9,7 +9,7 @@ import "../../interfaces/IUNIV2Pair.sol";
 import "../../interfaces/IUniswapRouterETH.sol";
 import "./omni-Masterchef.sol";
 
-contract BaseMesoStrategyLP is StratManager, FeeManager {
+contract MesoOmniStrategyLP is StratManager, FeeManager {
     using SafeERC20 for IERC20;
     using SafeMath for uint256;
 
