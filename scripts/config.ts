@@ -8,7 +8,7 @@ export const config: { [key: string]: ConfigItem } = {
     stratContractName: "MesoOmniStrategyLP",
     vaultContractName: "MesoOmniVaultV2",
     vaultName: "MESOBTCTLOS Vault",
-    vaultSymbol: "MESOBTCTLOS",    
+    vaultSymbol: "MESOBTCTLOS",
     supportsVerify: false,
   },
 };
