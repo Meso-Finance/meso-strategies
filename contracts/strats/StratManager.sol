@@ -30,7 +30,19 @@ contract StratManager is Ownable, Pausable {
      * _unirouter router to use for swaps
      * _vault address of parent vault.
      */
-
+    constructor(
+        address _keeper,
+        address _strategist,
+        address _unirouter,
+        address _vault,     
+        address _harvester
+    ) public {
+        keeper = _keeper;
+        strategist = _strategist;
+        unirouter = _unirouter;
+        vault = _vault;   
+        harvester = _harvester;     
+    }
     // checks that caller is either owner or keeper.
     modifier onlyManager() {
         require(

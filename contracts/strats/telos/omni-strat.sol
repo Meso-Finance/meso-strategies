@@ -49,8 +49,16 @@ contract MesoOmniStrategyLP is StratManager, FeeManager {
     constructor(
         address _input,
         address _output,
-        uint256 _pid
-    ) public {
+        uint256 _pid,
+        address _keeper,
+        address _strategist,
+        address _unirouter,
+        address _vault,
+        address _harvester
+    )
+        public
+        StratManager(_keeper, _strategist, _unirouter, _vault, _harvester)
+    {
         require(
             _input != _output,
             "Meso Strat Error (Constructor): Input token cannot be the same as output token"
@@ -60,7 +68,7 @@ contract MesoOmniStrategyLP is StratManager, FeeManager {
         output = _output;
         poolId = _pid;
 
-        unirouter = 0xF9678db1CE83f6f51E5df348E2Cc842Ca51EfEc1; //Omni
+        // unirouter = 0xF9678db1CE83f6f51E5df348E2Cc842Ca51EfEc1; //Omni
         lpToken0 = IUniswapV2Pair(input).token0();
         lpToken1 = IUniswapV2Pair(input).token1();
 
@@ -90,7 +98,6 @@ contract MesoOmniStrategyLP is StratManager, FeeManager {
         lpToken1DustToUsdcRoute[0] = lpToken1;
         lpToken1DustToUsdcRoute[1] = Tlos;
         lpToken1DustToUsdcRoute[2] = usdc;
-
         _giveAllowances();
     }
 

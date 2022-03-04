@@ -7,4 +7,10 @@ export interface ConfigItem {
   vaultName: string;
   vaultSymbol: string;
   supportsVerify: boolean;
+  vaultAddress: string;
+  strategyAddress: string;
+  harvester: string;
+  keeper: string;
+  strategist: string;
+  unirouter: string;
 }
