@@ -16,6 +16,7 @@ export const deployStrat = async (config: ConfigItem) => {
       keeper,
       strategist,
       unirouter,
+      masterchef,
     } = config;
     const stratContract = await ethers.getContractFactory(stratContractName);
     const strat = await stratContract.deploy(
@@ -26,7 +27,8 @@ export const deployStrat = async (config: ConfigItem) => {
       strategist,
       unirouter,
       vaultAddress,
-      harvester
+      harvester,
+      masterchef
     );
     await strat.deployed();
     return strat.address;

@@ -13,4 +13,5 @@ export interface ConfigItem {
   keeper: string;
   strategist: string;
   unirouter: string;
+  masterchef: string;
 }

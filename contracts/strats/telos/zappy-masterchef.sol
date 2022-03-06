@@ -25,6 +25,6 @@ interface IMasterChef {
             address lpToken,
             uint256 allocPoint,
             uint256 lastRewardBlock,
-            uint256 accCharmPerShare
+            uint256 accZapPerShare
         );
 }
