@@ -15,3 +15,11 @@ export interface ConfigItem {
   unirouter: string;
   masterchef: string;
 }
+
+export interface Platform {
+  harvester: string;
+  unirouter: string;
+  strategist: string;
+  keeper: string;
+  masterchef: string;
+}

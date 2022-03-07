@@ -69,7 +69,7 @@ const main = async () => {
     vaultAddress: vault,
     strategyAddress: strategy,
   });
-
+  console.log(configItem);
   const vaultAddr = await deployVault(configItem);
   const stratAddr = await deployStrat(configItem);
   console.log(`Strat Deployed at ${stratAddr}`);

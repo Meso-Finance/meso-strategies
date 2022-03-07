@@ -1,5 +1,8 @@
 {
-  "name": "hardhat-project",
+  "name": "meso-strategies",
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "scripts": {
     "deploy": "node_modules/.bin/ts-node "
   },
@@ -40,6 +43,7 @@
   "dependencies": {
     "@nomiclabs/hardhat-web3": "^2.0.0",
     "@types/keccak": "^3.0.1",
+    "bignumber.js": "^9.0.2",
     "keccak": "^3.0.2",
     "rlp": "^3.0.0",
     "yargs": "^17.3.1"

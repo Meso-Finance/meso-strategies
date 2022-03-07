@@ -1,4 +1,14 @@
-import { ConfigItem } from "./types";
+import { ConfigItem, Platform } from "./types";
+
+export const platforms: { [key: string]: Platform } = {
+  [`telos-zappy`]: {
+    harvester: "0x2E36C8c81664062654D81d5d29af80FC90145e7C",
+    unirouter: "0xB9239AF0697C8efb42cBA3568424b06753c6da71",
+    strategist: "0xDef1ffF6D3a78e30b772B8BC9f8a7BDea06C520D",
+    keeper: "0xDef1ffF6D3a78e30b772B8BC9f8a7BDea06C520D",
+    masterchef: "0x3D2c6bCED5f50f5412234b87fF0B445aBA4d10e9",
+  },
+};
 
 export const config: { [key: string]: ConfigItem } = {
   [`omnidex-wbtc-tlos`]: {
@@ -54,7 +64,7 @@ export const config: { [key: string]: ConfigItem } = {
   },
   [`zappy-zap-wtlos`]: {
     input: "0x774d427B2105849A0FBb6f49c432C087E3607F6F",
-    output: "0x9a271e3748f59222f5581bae2540daa5806b3f77",
+    output: "0x9A271E3748F59222f5581BaE2540dAa5806b3F77",
     pid: 0,
     stratContractName: "MesoZappyStrategyLP",
     vaultContractName: "MesoTelosVaultV2",
@@ -63,10 +73,32 @@ export const config: { [key: string]: ConfigItem } = {
     supportsVerify: false,
     vaultAddress: "",
     strategyAddress: "",
-    harvester: "0x2E36C8c81664062654D81d5d29af80FC90145e7C",
-    unirouter: "0xB9239AF0697C8efb42cBA3568424b06753c6da71",
-    strategist: "0xDef1ffF6D3a78e30b772B8BC9f8a7BDea06C520D",
-    keeper: "0xDef1ffF6D3a78e30b772B8BC9f8a7BDea06C520D",
-    masterchef: "0x3D2c6bCED5f50f5412234b87fF0B445aBA4d10e9",
+    ...platforms["telos-zappy"],
+  },
+  [`zappy-usdc-wtlos`]: {
+    input: "0xeA96c8d2FFA10FFeF65a87C957C27114051336F4",
+    output: "0x9A271E3748F59222f5581BaE2540dAa5806b3F77",
+    pid: 1,
+    stratContractName: "MesoZappyStrategyLP",
+    vaultContractName: "MesoTelosVaultV2",
+    vaultName: "MESOZAPUSDCTLOS Vault",
+    vaultSymbol: "MESOUSDCTLOS",
+    supportsVerify: false,
+    vaultAddress: "",
+    strategyAddress: "",
+    ...platforms["telos-zappy"],
+  },
+  [`zappy-wtlos-eth`]: {
+    input: "0xA8A2ccbD5B130bd965Dc2C24fc8938AEa7493216",
+    output: "0x9A271E3748F59222f5581BaE2540dAa5806b3F77",
+    pid: 2,
+    stratContractName: "MesoZappyStrategyLP",
+    vaultContractName: "MesoTelosVaultV2",
+    vaultName: "MESOZAPETHTLOS Vault",
+    vaultSymbol: "MESOZAPETHTLOS",
+    supportsVerify: false,
+    vaultAddress: "",
+    strategyAddress: "",
+    ...platforms["telos-zappy"],
   },
 };
