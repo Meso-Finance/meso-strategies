@@ -17,6 +17,11 @@ export const deployStrat = async (config: ConfigItem) => {
       strategist,
       unirouter,
       masterchef,
+      wnative,
+      stable,
+      outputToUsdcRoute,
+      outputToLp0Route,
+      outputToLp1Route,
     } = config;
     const stratContract = await ethers.getContractFactory(stratContractName);
     const strat = await stratContract.deploy(
@@ -28,7 +33,12 @@ export const deployStrat = async (config: ConfigItem) => {
       unirouter,
       vaultAddress,
       harvester,
-      masterchef
+      masterchef,
+      wnative,
+      stable,
+      outputToUsdcRoute,
+      outputToLp0Route,
+      outputToLp1Route
     );
     await strat.deployed();
     return strat.address;

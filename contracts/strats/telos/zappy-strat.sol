@@ -16,8 +16,8 @@ contract MesoZappyStrategyLP is StratManager, FeeManager {
     // Tokens used
     address public input; // Token used to stake in the vault
     address public output; // Token rewarded by the delegate Masterchef
-    address public constant usdc = 0x818ec0A7Fe18Ff94269904fCED6AE3DaE6d6dC0b; // USDC;
-    address public constant Tlos = 0xD102cE6A4dB07D247fcc28F366A623Df0938CA9E; // Tlos;
+    address public usdc; 
+    address public wnative;
 
     address public lpToken0;
     address public lpToken1;
@@ -54,7 +54,12 @@ contract MesoZappyStrategyLP is StratManager, FeeManager {
         address _unirouter,
         address _vault,
         address _harvester,
-        address _masterchef
+        address _masterchef,
+        address _wnative,
+        address _stable,
+        address[] memory _outputToUsdcRoute,
+        address[] memory _outputToLp0Route,
+        address[] memory _outputToLp1Route
     )
         public
         StratManager(_keeper, _strategist, _unirouter, _vault, _harvester)
@@ -67,6 +72,8 @@ contract MesoZappyStrategyLP is StratManager, FeeManager {
         input = _input;
         output = _output;
         poolId = _pid;
+        wnative = _wnative;
+        usdc = _stable;
         masterchef = _masterchef;        
         lpToken0 = IUniswapV2Pair(input).token0();
         lpToken1 = IUniswapV2Pair(input).token1();
@@ -76,26 +83,18 @@ contract MesoZappyStrategyLP is StratManager, FeeManager {
             "Meso Strat Error (Constructor): Input token cannot be the same as any of the lpTokens"
         );
 
-        outputToUsdcRoute = new address[](2);
-        outputToUsdcRoute[0] = output;
-        outputToUsdcRoute[1] = usdc;
-
-        outputToLp0Route = new address[](2);
-        outputToLp0Route[0] = output;
-        outputToLp0Route[1] = lpToken0;
-
-        outputToLp1Route = new address[](2);
-        outputToLp1Route[0] = output;
-        outputToLp1Route[1] = lpToken1;
-
+        outputToUsdcRoute = _outputToUsdcRoute;        
+        outputToLp0Route = _outputToLp0Route;
+        outputToLp1Route = _outputToLp1Route;
+        
         lpToken0DustToUsdcRoute = new address[](3);
         lpToken0DustToUsdcRoute[0] = lpToken0;
-        lpToken0DustToUsdcRoute[1] = Tlos;
+        lpToken0DustToUsdcRoute[1] = wnative;
         lpToken0DustToUsdcRoute[2] = usdc;
 
         lpToken1DustToUsdcRoute = new address[](3);
         lpToken1DustToUsdcRoute[0] = lpToken1;
-        lpToken1DustToUsdcRoute[1] = Tlos;
+        lpToken1DustToUsdcRoute[1] = wnative;
         lpToken1DustToUsdcRoute[2] = usdc;
         _giveAllowances();
     }

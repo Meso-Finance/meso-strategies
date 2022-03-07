@@ -7,6 +7,8 @@ export const platforms: { [key: string]: Platform } = {
     strategist: "0xDef1ffF6D3a78e30b772B8BC9f8a7BDea06C520D",
     keeper: "0xDef1ffF6D3a78e30b772B8BC9f8a7BDea06C520D",
     masterchef: "0x3D2c6bCED5f50f5412234b87fF0B445aBA4d10e9",
+    wnative: "0xD102cE6A4dB07D247fcc28F366A623Df0938CA9E",
+    stable: "0x818ec0A7Fe18Ff94269904fCED6AE3DaE6d6dC0b",
   },
 };
 
@@ -27,6 +29,8 @@ export const config: { [key: string]: ConfigItem } = {
     strategist: "0xDef1ffF6D3a78e30b772B8BC9f8a7BDea06C520D",
     keeper: "0xDef1ffF6D3a78e30b772B8BC9f8a7BDea06C520D",
     masterchef: "",
+    wnative: "",
+    stable: "",
   },
   [`omnidex-wtlos-charm`]: {
     input: "0x933F83735f26e51c61955b4fCA88F13fbd423A0C",
@@ -44,6 +48,8 @@ export const config: { [key: string]: ConfigItem } = {
     strategist: "0xDef1ffF6D3a78e30b772B8BC9f8a7BDea06C520D",
     keeper: "0xDef1ffF6D3a78e30b772B8BC9f8a7BDea06C520D",
     masterchef: "",
+    wnative: "",
+    stable: "",
   },
   [`omnidex-usdc-usdt`]: {
     input: "0x8805F519663E47aBd6adbA4303639f69e51fd112",
@@ -61,6 +67,8 @@ export const config: { [key: string]: ConfigItem } = {
     strategist: "0xDef1ffF6D3a78e30b772B8BC9f8a7BDea06C520D",
     keeper: "0xDef1ffF6D3a78e30b772B8BC9f8a7BDea06C520D",
     masterchef: "",
+    wnative: "",
+    stable: "",
   },
   [`zappy-zap-wtlos`]: {
     input: "0x774d427B2105849A0FBb6f49c432C087E3607F6F",
@@ -99,6 +107,33 @@ export const config: { [key: string]: ConfigItem } = {
     supportsVerify: false,
     vaultAddress: "",
     strategyAddress: "",
+    ...platforms["telos-zappy"],
+  },
+  [`zappy-wtlos-wbtc`]: {
+    input: "0x2C3dd9b87f5EcD49F6AE3566a5d61D8Ea6Dc21c2",
+    output: "0x9A271E3748F59222f5581BaE2540dAa5806b3F77",
+    pid: 3,
+    stratContractName: "MesoZappyStrategyLP",
+    vaultContractName: "MesoTelosVaultV2",
+    vaultName: "MESOZAPBTCTLOS Vault",
+    vaultSymbol: "MESOZAPBTCTLOS",
+    supportsVerify: false,
+    vaultAddress: "",
+    strategyAddress: "",
+    outputToUsdcRoute: [
+      "0x9A271E3748F59222f5581BaE2540dAa5806b3F77",
+      "0xD102cE6A4dB07D247fcc28F366A623Df0938CA9E",
+      "0x818ec0A7Fe18Ff94269904fCED6AE3DaE6d6dC0b",
+    ],
+    outputToLp0Route: [
+      "0x9A271E3748F59222f5581BaE2540dAa5806b3F77",
+      "0xD102cE6A4dB07D247fcc28F366A623Df0938CA9E",
+    ],
+    outputToLp1Route: [
+      "0x9A271E3748F59222f5581BaE2540dAa5806b3F77",
+      "0xD102cE6A4dB07D247fcc28F366A623Df0938CA9E",
+      "0xf390830DF829cf22c53c8840554B98eafC5dCBc2",
+    ],
     ...platforms["telos-zappy"],
   },
 };

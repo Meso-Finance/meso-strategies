@@ -1,4 +1,14 @@
-export interface ConfigItem {
+export interface Platform {
+  harvester: string;
+  unirouter: string;
+  strategist: string;
+  keeper: string;
+  masterchef: string;
+  wnative: string;
+  stable: string;
+}
+
+export interface ConfigItem extends Platform {
   input: string;
   output: string;
   pid: number | undefined;
@@ -9,17 +19,7 @@ export interface ConfigItem {
   supportsVerify: boolean;
   vaultAddress: string;
   strategyAddress: string;
-  harvester: string;
-  keeper: string;
-  strategist: string;
-  unirouter: string;
-  masterchef: string;
-}
-
-export interface Platform {
-  harvester: string;
-  unirouter: string;
-  strategist: string;
-  keeper: string;
-  masterchef: string;
+  outputToUsdcRoute?: string[];
+  outputToLp0Route?: string[];
+  outputToLp1Route?: string[];
 }

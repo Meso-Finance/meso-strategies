@@ -120,6 +120,7 @@ contract MesoTelosVaultV2 is ERC20, Ownable, ReentrancyGuard {
         }
 
         _mint(msg.sender, shares);
+        
 
         emit UserDeposit(msg.sender, _amount);
     }
