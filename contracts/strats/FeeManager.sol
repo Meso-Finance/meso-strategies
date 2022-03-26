@@ -4,7 +4,7 @@ pragma solidity ^0.6.12;
 import "./StratManager.sol";
 
 abstract contract FeeManager is StratManager {
-    uint public STRATEGIST_FEE = 0;
+    uint public STRATEGIST_FEE = 250;
     uint constant public MAX_FEE = 600;
     
     event feeChange(address indexed  _manager, uint indexed _newFee);
